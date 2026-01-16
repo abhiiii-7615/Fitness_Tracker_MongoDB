@@ -7,7 +7,10 @@ const app = express();
 const db = require('./models');
 
 app.use(cors({
-    origin: 'http://localhost:3000', // only allowing my frontend to make backend calls
+    origin: [
+        'http://localhost:3000', // for local development
+        'https://fitness-tracker-navy-alpha.vercel.app' // Vercel frontend
+    ],
     methods: ['GET', 'POST'],        
     credentials: true                
 }));

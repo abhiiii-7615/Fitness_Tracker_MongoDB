@@ -7,6 +7,8 @@ import {
 } from 'recharts';
 import axios from 'axios';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://fitness-tracker-p05w.onrender.com';
+
 const Dashboard = () => {
   const username = localStorage.getItem('username');
   const [sleepData, setSleepData] = useState([]);
@@ -37,7 +39,7 @@ const Dashboard = () => {
 
     for (let { key, setter } of endpoints) {
       try {
-        const res = await axios.get(`http://localhost:5000/api/${key}/weekly`, {
+        const res = await axios.get(`${API_BASE_URL}/api/${key}/weekly`, {
           params: { username, endDate }
         });
         const rawData = res.data;

@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://fitness-tracker-p05w.onrender.com';
+
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api', 
+  baseURL: `${API_BASE_URL}/api`, 
 });
 
 // Adding  token to all requests (and this is checked in the middleware whether the starting )
@@ -14,7 +16,7 @@ API.interceptors.request.use((req) => {
 });
 
 // Exporting individual API calls to the frontend compos 
-export const getBackendStatus = () => axios.get('http://localhost:5000/'); // for testing only(will print backend running in port 5000)
+export const getBackendStatus = () => axios.get(`${API_BASE_URL}/`); // for testing only(will print backend running in port 5000)
 export const registerUser = (formData) => API.post('/register', formData);//register form
 export const loginUser = (formData) => API.post('/login', formData);//login form
 export const getProfile = () => API.get('/profile');//fetching profile for userprofile.jsx
