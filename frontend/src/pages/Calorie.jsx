@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './calorie.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -25,9 +25,9 @@ const Calorie = () => {
   const username = localStorage.getItem('username');
   const today = new Date().toISOString().split('T')[0];
 
-  const userLogKey = `calorieLogs_${username}`;
-  const userGoalKey = `calorieGoal_${username}`;
-  const dateKey = `calorieDate_${username}`;
+  const userLogKey = useMemo(() => `calorieLogs_${username}`, [username]);
+  const userGoalKey = useMemo(() => `calorieGoal_${username}`, [username]);
+  const dateKey = useMemo(() => `calorieDate_${username}`, [username]);
 
   const [goal, setGoal] = useState(() => parseInt(localStorage.getItem(userGoalKey)) || 2000);
   const [inputGoal, setInputGoal] = useState(goal);
@@ -40,7 +40,7 @@ const Calorie = () => {
   const consumed = logs.reduce((sum, item) => sum + item.cal, 0);
   const percentage = Math.min((consumed / goal) * 100, 100).toFixed(0);
 
-  const syncToDatabase = async (newLogs) => {
+  const syncToDatabase = useCallback(async (newLogs) => {
     if (!username) return;
     const newConsumed = newLogs.reduce((sum, item) => sum + item.cal, 0);
     try {
@@ -48,14 +48,14 @@ const Calorie = () => {
     } catch (err) {
       console.error('Failed to sync calories:', err);
     }
-  };
+  }, [username, today]);
 
   useEffect(() => {
     localStorage.setItem(userLogKey, JSON.stringify(logs));
     localStorage.setItem(userGoalKey, goal);
     localStorage.setItem(dateKey, today);
     syncToDatabase(logs);
-  }, [logs, goal, today]);
+  }, [logs, goal, today, userLogKey, userGoalKey, dateKey, syncToDatabase]);
 
   useEffect(() => {
     const now = new Date();
@@ -76,7 +76,7 @@ const Calorie = () => {
     }, msUntilMidnight);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [userLogKey, dateKey, syncToDatabase]);
 
   const handleAdd = (food) => {
     const updatedLogs = [...logs, food];

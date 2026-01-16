@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import './Dashboard.css';
@@ -9,23 +9,24 @@ import axios from 'axios';
 
 const Dashboard = () => {
   const username = localStorage.getItem('username');
-  const today = new Date();
   const [sleepData, setSleepData] = useState([]);
   const [waterData, setWaterData] = useState([]);
   const [calorieData, setCalorieData] = useState([]);
 
-  const generateLast7Days = () => {
-    const days = [];
-    for (let i = 6; i >= 0; i--) {
-      const date = new Date();
-      date.setDate(today.getDate() - i);
-      days.push(date.toISOString().split('T')[0]);
-    }
-    return days;
-  };
-
-  const fetchWeeklyStats = async () => {
+  const fetchWeeklyStats = useCallback(async () => {
+    const today = new Date();
     const endDate = today.toISOString().split('T')[0];
+    
+    const generateLast7Days = () => {
+      const days = [];
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(today.getDate() - i);
+        days.push(date.toISOString().split('T')[0]);
+      }
+      return days;
+    };
+
     const endpoints = [
       { key: 'sleep', setter: setSleepData },
       { key: 'water', setter: setWaterData },
@@ -55,11 +56,11 @@ const Dashboard = () => {
         console.error(`Failed to fetch ${key} stats`, err);
       }
     }
-  };
+  }, [username]);
 
   useEffect(() => {
     fetchWeeklyStats();
-  }, []);
+  }, [fetchWeeklyStats]);
 
   const renderCard = (title, data, color) => (
     <div className="chart-card">
