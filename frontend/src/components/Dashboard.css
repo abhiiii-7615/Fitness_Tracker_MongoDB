@@ -1,0 +1,85 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.navbar {
+  background-color: #0D1321;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: #FF4C4C;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dashboard-main {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background-color: #1D2D44;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.sidebar button {
+  background-color: #3E5C76;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #F5F5F5;
+}
+
+.dashboard-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2a9d8f;
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-links button {
+  margin: 0 5px;
+  background: #ffffff22;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,178 @@
+/* calorie.css */
+.water-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff9f0;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.progress-section {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.summary {
+  margin-top: 1rem;
+  text-align: center;
+  color: #e67e22;
+}
+
+.log-section {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  max-width: 95vw;
+}
+
+.log-section h2 {
+  margin-bottom: 1rem;
+  color: #d35400;
+}
+
+.food-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.food-card {
+  background: #fef5e7;
+  border: 1px solid #fcd9b5;
+  border-radius: 10px;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.food-card:hover {
+  background: #fdebd0;
+}
+
+.food-name {
+  font-weight: bold;
+  color: #e67e22;
+}
+
+.food-info {
+  font-size: 0.9rem;
+  color: #a65d00;
+}
+
+.food-card button {
+  background: #e67e22;
+  border: none;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.food-card button:hover {
+  background: #ca6f1e;
+}
+
+.custom-food {
+  margin: 1.5rem 0;
+}
+
+.custom-food h3 {
+  margin-bottom: 0.5rem;
+  color: #d35400;
+}
+
+.custom-food input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.custom-food .add {
+  width: 100%;
+  background-color: #e67e22;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.custom-food .add:hover {
+  background-color: #ca6f1e;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.action-buttons .add {
+  background-color: #ff7675;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.action-buttons .add:hover {
+  background-color: #d63031;
+}
+
+.goal-update {
+  margin-top: 1.5rem;
+}
+
+.goal-update label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.goal-update input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.goal-update button {
+  background-color: #e67e22;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.goal-update button:hover {
+  background-color: #d35400;
+}
+
+.quote {
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+  color: #a65d00;
+}

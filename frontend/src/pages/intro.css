@@ -1,0 +1,142 @@
+.intro-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #fbe9e7);
+  color: #333;
+  padding-bottom: 4rem;
+}
+
+.navbar {
+  background-color: #253fb4;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-buttons button {
+  margin-left: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #ffffff;
+  color: #d219c3;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav-buttons button:hover {
+  background-color: #c9c9c9;
+}
+
+.intro-header {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.intro-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.features {
+  margin: 3rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+.features h3 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.feature-card {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: scale(1.02);
+}
+
+.feature-image {
+  width: 180px;
+  height: 180px;
+  background-color: #e0e0e0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}.feature-image {
+  width: 180px;
+  height: 180px;
+  background-color: #e0e0e0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.feature-text {
+  padding: 1rem;
+}
+
+.feature-text h4 {
+  color: #1976d2;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.feature-text p {
+  color: #555;
+  line-height: 1.5;
+}
+
+.motivation {
+  text-align: center;
+  margin: 4rem auto;
+  max-width: 700px;
+}
+
+.motivation h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.motivation blockquote {
+  background: #fff3e0;
+  border-left: 5px solid #ff9800;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  color: #444;
+  border-radius: 8px;
+}

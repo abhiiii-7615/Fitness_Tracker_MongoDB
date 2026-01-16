@@ -1,0 +1,48 @@
+/* Profile.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f8f9fa, #e0eafc);
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: scale(1.02);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-container p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.profile-container p strong {
+  color: #222;
+}
