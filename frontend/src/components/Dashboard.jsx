@@ -7,7 +7,11 @@ import {
 } from 'recharts';
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://fitness-tracker-p05w.onrender.com';
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL ||
+  (window.location.hostname === 'localhost'
+    ? 'http://localhost:5000'
+    : 'https://fitness-tracker-p05w.onrender.com');
 
 const Dashboard = () => {
   const username = localStorage.getItem('username');
@@ -42,10 +46,16 @@ const Dashboard = () => {
         const res = await axios.get(`${API_BASE_URL}/api/${key}/weekly`, {
           params: { username, endDate }
         });
-        const rawData = res.data;
+        const rawData = Array.isArray(res.data) ? res.data : [];
 
         const mapped = days.map(date => {
-          const log = rawData.find(item => item.date === date);
+          const log = rawData.find(item => {
+            if (!item?.date) return false;
+            const itemDate = typeof item.date === 'string'
+              ? item.date.split('T')[0]
+              : new Date(item.date).toISOString().split('T')[0];
+            return itemDate === date;
+          });
           let value = 0;
           if (key === 'sleep') value = log?.sleepHours || 0;
           if (key === 'water') value = log?.waterIntake || 0;

@@ -1,20 +1,16 @@
-const db = require("../models");
-const DailyLog = db.water_log;
+const DailyLog = require("../models/water.model");
 
 exports.createOrUpdateLog = async (req, res) => {
   const { username, date, ...logData } = req.body;
 
   try {
-    const [log, created] = await DailyLog.findOrCreate({
-      where: { username, date },
-      defaults: { ...logData }
-    });
+    await DailyLog.findOneAndUpdate(
+      { username, date },
+      { $set: { ...logData } },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
 
-    if (!created) {
-      await log.update(logData);
-    }
-
-    res.status(200).json({ message: created ? "Log created" : "Log updated" });
+    res.status(200).json({ message: "Log saved" });
   } catch (err) {
     res.status(500).json({ message: "Failed to store log", error: err.message });
   }
@@ -24,7 +20,7 @@ exports.getDailyLog = async (req, res) => {
   const { username, date } = req.query;
 
   try {
-    const log = await DailyLog.findOne({ where: { username, date } });
+    const log = await DailyLog.findOne({ username, date });
     res.status(200).json(log || {});
   } catch (err) {
     res.status(500).json({ message: "Failed to fetch log", error: err.message });
@@ -35,16 +31,13 @@ exports.getWeeklyStats = async (req, res) => {
   const { username, endDate } = req.query;
   const startDate = new Date(endDate);
   startDate.setDate(startDate.getDate() - 6);
+  const startDateString = startDate.toISOString().split("T")[0];
 
   try {
-    const logs = await DailyLog.findAll({
-      where: {
-        username,
-        date: {
-          [db.Sequelize.Op.between]: [startDate, endDate]
-        }
-      }
-    });
+    const logs = await DailyLog.find({
+      username,
+      date: { $gte: startDateString, $lte: endDate },
+    }).sort({ date: 1 });
 
     res.status(200).json(logs);
   } catch (err) {
