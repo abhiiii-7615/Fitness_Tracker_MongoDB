@@ -11,7 +11,7 @@ const API_BASE_URL =
   process.env.REACT_APP_API_URL ||
   (window.location.hostname === 'localhost'
     ? 'http://localhost:5000'
-    : 'https://fitness-tracker-p05w.onrender.com');
+    : 'https://fitness-tracker-mongodb.onrender.com');
 
 const Dashboard = () => {
   const username = localStorage.getItem('username');
